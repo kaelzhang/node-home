@@ -26,7 +26,11 @@ Returns `path` the home directory specified by operating system.
 
 ## home.resolve([from...], to)
 
-Resolves `to` to an absolute path, if `to` begins with `'~'`, it will be cooked to home directory before `path.resolve()`d.
+Resolves `to` to an absolute path, if `to` begins with `'~'`, it will be cooked before `path.resolve()`d.
+
+```js
+home.resolve('~/file'); // 'Users/kael/file'
+```
 
 The usage of `home.resolve` is very similar to [`path.resolve`](http://nodejs.org/api/path.html#path_path_resolve_from_to)
 
@@ -51,6 +55,18 @@ cd ~/file/
 cd ..
 cd a/../subfile
 pwd
+```
+
+## What about `home.relative()`, `home.join()` ?
+
+For now, `home` doesn't support those, which I thought is unnecessary to make this module too complicated. 
+
+I'd rather `home.resolve()` the directories
+
+```js
+var dir = '~/dir';
+dir = home.resolve(dir);
+path.join(dir, './abc');
 ```
 
 ## License
