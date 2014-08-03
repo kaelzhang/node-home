@@ -1,7 +1,7 @@
 {
   "name": "home",
-  "version": "0.1.0",
-  "description": "home",
+  "version": "0.1.1",
+  "description": "Gets the home dir or resolves home directories: `home.resolve('~/path/to')`.",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec ./test/*.js"
@@ -11,10 +11,14 @@
     "url": "git://github.com/kaelzhang/node-home.git"
   },
   "keywords": [
-    "home"
+    "home",
+    "user-home",
+    "resolve",
+    "cross-platform",
+    "windows"
   ],
   "engines": {
-    "node": ">=0.11.0"
+    "node": ">=0.10.0"
   },
   "author": "kaelzhang",
   "license": "MIT",
