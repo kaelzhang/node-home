@@ -35,11 +35,17 @@ function resolve_home (path) {
     return path;
   }
 
+  if (path === '~') {
+    return USER_HOME;
+  }
+
   // I thought, nobody will use `'~\\path\\to'`, but only `'~/path/to'`
   if (!~path.indexOf('~/')) {
+    // '~file'
     return path;
   }
 
+  // '~/file' -> '/Users/xxx/file'
   return USER_HOME + path.slice(1);
 }
 
