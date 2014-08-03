@@ -20,7 +20,7 @@ home.resolve = function (/* [from,] */ to) {
     case 1:
       return resolve(resolve_home(to));
     case 2:
-      return resolve(resolve(to), resolve(arguments[1]));
+      return resolve(resolve_home(to), resolve_home(arguments[1]));
     default:
       // Actually, `node_path.resolve` has no `this` pointer,
       // however, we apply it to `node_path` 
