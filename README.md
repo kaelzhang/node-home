@@ -61,7 +61,7 @@ pwd
 
 For now, `home` doesn't support those, which I thought is unnecessary to make this module too complicated. 
 
-I'd rather `home.resolve()` the directories
+I'd rather `home.resolve()` the directories, before `path.join()`.
 
 ```js
 var dir = '~/dir';
