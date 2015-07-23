@@ -1,7 +1,7 @@
 {
   "name": "home",
   "version": "0.1.7",
-  "description": "Gets the home dir or resolves home directories: `home.resolve('~/path/to')`.",
+  "description": "Gets the home dir or resolves home directories.",
   "main": "index.js",
   "scripts": {
     "test": "./node_modules/.bin/mocha --reporter spec ./test/*.js"
@@ -12,7 +12,9 @@
   },
   "keywords": [
     "home",
+    "directory",
     "user-home",
+    "path",
     "resolve",
     "cross-platform",
     "windows"

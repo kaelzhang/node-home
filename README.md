@@ -17,7 +17,7 @@ $ npm install home --save
 ```js
 var home = require('home');
 
-home();            // '/Users/kael'
+home();            // Mac && Linux: '/Users/kael', Windows: '\\Users\\kael'
 home.resolve('~'); // '/Users/kael'
 
 var some_path = '~/workspace';
