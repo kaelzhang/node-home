@@ -1,6 +1,6 @@
 {
   "name": "home",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Gets the home dir or resolves home directories: `home.resolve('~/path/to')`.",
   "main": "index.js",
   "scripts": {

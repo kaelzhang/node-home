@@ -1,10 +1,10 @@
-[![NPM version](https://badge.fury.io/js/home.svg)](http://badge.fury.io/js/home)
-[![Build Status](https://travis-ci.org/kaelzhang/node-home.svg?branch=master)](https://travis-ci.org/kaelzhang/node-home)
-[![Dependency Status](https://gemnasium.com/kaelzhang/node-home.svg)](https://gemnasium.com/kaelzhang/node-home)
-
 # home
 
 A tiny utility to get the home directory, or resolve a path begins with `'~'`, with cross-platform compatibility.
+
+[![NPM version](https://badge.fury.io/js/home.svg)](http://badge.fury.io/js/home)
+[![Build Status](https://travis-ci.org/kaelzhang/node-home.svg?branch=master)](https://travis-ci.org/kaelzhang/node-home)
+[![Dependency Status](https://gemnasium.com/kaelzhang/node-home.svg)](https://gemnasium.com/kaelzhang/node-home)
 
 ## Install
 
