@@ -13,7 +13,8 @@ $ npm install home --save
 ```js
 var home = require('home');
 
-home(); // '/Users/kael'
+home();            // '/Users/kael'
+home.resolve('~'); // '/Users/kael'
 
 var some_path = '~/workspace';
 home.resolve(some_path); // '/Users/kael/workspace'
@@ -37,6 +38,9 @@ The usage of `home.resolve` is very similar to [`path.resolve`](http://nodejs.or
 Another way to think of it is as a sequence of cd commands in a shell.
 
 ```js
+home.resolve();
+// -> current directory
+
 home.resolve('foo/bar', '~/file/', '..', 'a/../subfile');
 // -> '/Users/kael/subfile'
 ```
