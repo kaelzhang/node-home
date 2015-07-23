@@ -2,7 +2,10 @@
 
 module.exports = home;
 
-var USER_HOME = process.env[(process.platform == 'win32') ? 'USERPROFILE' : 'HOME'];
+var USER_HOME = process.platform == 'win32'
+  ? process.env.HOMEPATH || process.env.USERPROFILE
+  : process.env.HOME;
+
 var node_path = require('path');
 
 function home () {
