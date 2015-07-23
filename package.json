@@ -1,6 +1,6 @@
 {
   "name": "home",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Gets the home dir or resolves home directories.",
   "main": "index.js",
   "scripts": {
