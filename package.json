@@ -1,6 +1,6 @@
 {
   "name": "home",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Gets the home dir or resolves home directories.",
   "main": "index.js",
   "scripts": {
@@ -30,5 +30,8 @@
   "devDependencies": {
     "mocha": "*",
     "chai": "*"
+  },
+  "dependencies": {
+    "os-homedir": "^1.0.1"
   }
 }
