@@ -7,52 +7,17 @@ function home () {
   return USER_HOME
 }
 
+const resolveHome = path =>
+  path === '~'
+    ? USER_HOME
+    // I thought, nobody will use `'~\\path\\to'`, but only `'~/path/to'`
+    : !~ path.indexOf('~/')
+      // '~file'
+      ? path
+      // '~/file' -> '/Users/xxx/file'
+      : USER_HOME + path.slice(1)
+
 // The enhanced `path.resolve`
-home.resolve = function (/* [from,] */ to) {
-  switch (arguments.length) {
-  case 0:
-    return resolve()
-  case 1:
-    return resolve(resolve_home(to))
-  case 2:
-    return resolve(resolve_home(to), resolve_home(arguments[1]))
-  default:
-    // Actually, `node_path.resolve` has no `this` pointer,
-    // however, we apply it to `node_path`
-    return resolve(map_resolve(arguments))
-  }
-}
-
-
-function resolve_home (path) {
-  if (!path) {
-    // Actually, it will lead to an TypeError of `path.resolve`
-    return path
-  }
-
-  if (path === '~') {
-    return USER_HOME
-  }
-
-  // I thought, nobody will use `'~\\path\\to'`, but only `'~/path/to'`
-  if (!~ path.indexOf('~/')) {
-    // '~file'
-    return path
-  }
-
-  // '~/file' -> '/Users/xxx/file'
-  return USER_HOME + path.slice(1)
-}
-
-
-function map_resolve (args) {
-  const paths = []
-  let {length} = args
-  while (length --) {
-    paths[length] = resolve_home(args[length])
-  }
-
-  return paths
-}
+home.resolve = (...args) => resolve(...args.map(resolveHome))
 
 module.exports = home

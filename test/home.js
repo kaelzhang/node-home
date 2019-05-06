@@ -1,12 +1,13 @@
 const {expect} = require('chai')
 const home = require('../')
 
+let resolveTests
 
 // Node.js test cases from https://github.com/joyent/node/blob/master/test/simple/test-path.js
 const isWindows = process.platform === 'win32'
 if (isWindows) {
   // windows
-  var resolveTests =
+  resolveTests =
     // arguments                                    result
     [
       [
@@ -45,7 +46,7 @@ if (isWindows) {
     ]
 } else {
   // Posix
-  var resolveTests =
+  resolveTests =
     // arguments                                    result
     [
       [
@@ -80,12 +81,14 @@ describe("home.resolve(), with no '~' path:", () => {
   })
 })
 
+let HOME
+let homeResolveTests
 
 if (isWindows) {
-  var HOME = process.env.USERPROFILE
+  HOME = process.env.USERPROFILE
 
   // windows
-  var homeResolveTests =
+  homeResolveTests =
     // arguments                                    result
     [
       [
@@ -126,9 +129,9 @@ if (isWindows) {
       ]
     ]
 } else {
-  var {HOME} = process.env
+  ({HOME} = process.env)
   // Posix
-  var homeResolveTests =
+  homeResolveTests =
     // arguments                                    result
     [
       [
@@ -159,7 +162,6 @@ describe('home():', () => {
 
 describe("home.resolve(), with '~' path:", () => {
   homeResolveTests.forEach((c, i) => {
-    console.log(c, i)
     const args = c[0]
     const result = c[1]
     it(`${args.map(JSON.stringify).join(', ')} -> ${JSON.stringify(result)}`, () => {

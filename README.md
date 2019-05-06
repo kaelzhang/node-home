@@ -5,21 +5,23 @@
 
 A tiny utility to get the home directory, or resolve a path begins with `'~'`, with cross-platform compatibility.
 
+Since `2.0.0`, `home only supports node >= 5.12.0`
+
 ## Install
 
 ```sh
-$ npm install home --save
+$ npm i home
 ```
 
 ## Usage
 
 ```js
-var home = require('home')
+const home = require('home')
 
 home()              // Mac && Linux: '/Users/kael', Windows: '\\Users\\kael'
 home.resolve('~')   // '/Users/kael'
 
-var some_path = '~/workspace'
+const some_path = '~/workspace'
 home.resolve(some_path)         // '/Users/kael/workspace'
 home.resolve(some_path, 'abc')  // '/Users/kael/workspace/abc'
 ```
@@ -78,6 +80,6 @@ path.join(dir, './abc')
 
 ## License
 
-May be freely distributed under the [MIT license](https://raw.githubusercontent.com/kaelzhang/node-home/master/LICENSE-MIT).
+May be freely distributed under the [MIT license](https://raw.githubusercontent.com/kaelzhang/node-home/master/LICENSE).
 
 Copyright (c) Kael Zhang and [other contributors](https://github.com/kaelzhang/node-home/graphs/contributors).
