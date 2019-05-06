@@ -1,11 +1,9 @@
-'use strict';
-
-var expect = require('chai').expect;
-var home = require('../');
+const {expect} = require('chai')
+const home = require('../')
 
 
 // Node.js test cases from https://github.com/joyent/node/blob/master/test/simple/test-path.js
-var isWindows = process.platform === 'win32';
+const isWindows = process.platform === 'win32'
 if (isWindows) {
   // windows
   var resolveTests =
@@ -44,7 +42,7 @@ if (isWindows) {
       [
         ['c:/', '///some//dir'], 'c:\\some\\dir'
       ]
-    ];
+    ]
 } else {
   // Posix
   var resolveTests =
@@ -65,26 +63,26 @@ if (isWindows) {
       [
         ['/some/dir', '.', '/absolute/'], '/absolute'
       ]
-    ];
+    ]
 }
 
 // var home = require('path')
-var resolve = home.resolve;
-describe("home.resolve(), with no '~' path:", function(){
-  resolveTests.forEach(function (c) {
-    var args = c[0];
-    var result = c[1];
+const {resolve} = home
+describe("home.resolve(), with no '~' path:", () => {
+  resolveTests.forEach(c => {
+    const args = c[0]
+    const result = c[1]
     it(
-      'normal: ' + args.map(JSON.stringify).join(', ') 
-      + ' -> ' + JSON.stringify(result), function(){
-      expect(resolve.apply(home, args)).to.equal(result);
-    });
-  });
-});
+      `normal: ${args.map(JSON.stringify).join(', ')
+      } -> ${JSON.stringify(result)}`, () => {
+        expect(resolve.apply(home, args)).to.equal(result)
+      })
+  })
+})
 
 
 if (isWindows) {
-  var HOME = process.env.USERPROFILE;
+  var HOME = process.env.USERPROFILE
 
   // windows
   var homeResolveTests =
@@ -126,10 +124,9 @@ if (isWindows) {
       [
         ['c:/', '///some//dir'], 'c:\\some\\dir'
       ]
-    ];
-
+    ]
 } else {
-  var HOME = process.env.HOME;
+  var {HOME} = process.env
   // Posix
   var homeResolveTests =
     // arguments                                    result
@@ -138,34 +135,35 @@ if (isWindows) {
         ['~'], HOME
       ],
       [
-        ['~/var/lib', '../', 'file/'], HOME + '/var/file'
+        ['~/var/lib', '../', 'file/'], `${HOME}/var/file`
       ],
       [
         ['~/var/lib', '/../', 'file/'], '/file'
       ],
       [
-        ['~/some/dir', '.', '~/absolute/'], HOME + '/absolute'
+        ['~/some/dir', '.', '~/absolute/'], `${HOME}/absolute`
       ],
       [
         ['~/some/dir', '.', '/absolute/'], '/absolute'
       ]
-    ];
+    ]
 }
 
 
-describe("home():", function(){
-  it("home(), should return home dir", function(){
-    expect(home()).to.equal(HOME);
-  });
-});
+describe('home():', () => {
+  it('home(), should return home dir', () => {
+    expect(home()).to.equal(HOME)
+  })
+})
 
 
-describe("home.resolve(), with '~' path:", function(){
-  homeResolveTests.forEach(function (c, i) { console.log(c, i)
-    var args = c[0];
-    var result = c[1];
-    it(args.map(JSON.stringify).join(', ') + ' -> ' + JSON.stringify(result), function(){
-      expect(resolve.apply(home, args)).to.equal(result);
-    });
-  });
-});
+describe("home.resolve(), with '~' path:", () => {
+  homeResolveTests.forEach((c, i) => {
+    console.log(c, i)
+    const args = c[0]
+    const result = c[1]
+    it(`${args.map(JSON.stringify).join(', ')} -> ${JSON.stringify(result)}`, () => {
+      expect(resolve.apply(home, args)).to.equal(result)
+    })
+  })
+})
